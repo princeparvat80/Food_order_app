@@ -1,6 +1,7 @@
 import React from "react";
+import Card from "../UI/Card";
 import classes from "./AvailableMeals.module.css";
-
+import MealsIteams from "./MealItems/MealsIteams";
 //Dummy Meals Items
 const DUMMY_MEALS = [
   {
@@ -31,14 +32,23 @@ const DUMMY_MEALS = [
 
 const AvailableMeals = () => {
   // Here we are changing a normal Array DUMMY_MEALS in to JSX array to use its element
-  const mealslist = DUMMY_MEALS.map((meals) => <li>{meals.name}</li>);
+  const mealslist = DUMMY_MEALS.map((meals) => (
+    <MealsIteams
+      id={meals.id}
+      key={meals.id}
+      name={meals.name}
+      description={meals.description}
+      price={meals.price}
+    />
+    ));
 
   return (
     <section className={classes.meals}>
-      <ul>
+      <Card>
         {/* Rendering MEals Items from Dummy array */}
         {mealslist}
-      </ul>
+        
+      </Card>
     </section>
   );
 };
